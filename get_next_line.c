@@ -6,7 +6,7 @@
 /*   By: hstiv <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/13 16:10:47 by hstiv             #+#    #+#             */
-/*   Updated: 2019/01/19 20:15:34 by hstiv            ###   ########.fr       */
+/*   Updated: 2019/05/08 14:05:20 by hstiv            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int				get_next_line(const int fd, char **line)
 
 	if (!line || fd < 0 || read(fd, NULL, 0) < 0)
 		return (-1);
-	while ((y = read(fd, (void *)buf, BUFF_SIZE)) > 0)
+	while ((!ft_strchr(gnl[fd], '\n')) &&
+			(y = read(fd, (void *)buf, BUFF_SIZE)) > 0)
 	{
 		buf[y] = '\0';
 		if (!gnl[fd])
